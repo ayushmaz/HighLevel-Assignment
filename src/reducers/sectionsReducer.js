@@ -21,13 +21,14 @@ const sectionSlice = createSlice({
   initialState: initialState,
   reducers: {
     addSection: (state, action) => {
-      state.sections.push(action.payload);
+      state.sectionsOrder.push(action.payload);
     },
     removeSection: (state, action) => {
-      state.sections = state.sections.filter(section => section.sectionId !== action.payload);
+      state.sectionsOrder = state.sections.filter(section => section.sectionId !== action.payload);
     },
     reArrangeSections: (state, action) => {
-      state.sections = action.payload;
+      console.log(action.payload)
+      state.sectionsOrder = action.payload;
     },
   },
 });

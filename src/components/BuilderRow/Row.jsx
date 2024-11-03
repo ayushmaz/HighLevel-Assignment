@@ -1,32 +1,37 @@
 import { useSelector } from "react-redux";
-import "./builderRow.css"
+import "./builderRow.css";
 import BuilderColumn from "../BuilderColumn/BuilderColumn";
+import ContainerActions from "../reusableComponents/ContainerActions";
 
 const Row = ({ rowId }) => {
   const { rowsById } = useSelector((state) => state.rows);
-  const {columns} = rowsById[rowId];
+  const { columns } = rowsById[rowId];
 
-  if(columns.length === 0) {
+  const RowMoreActions = () => {
     return (
-        <>
-          <div href="#" className="new-row-blank">
-            <span className="btn btn-light5 btn-slim">Add New Row</span>
-          </div>
-        </>
-      );
-  }
+      <>
+        <ContainerActions />
+        <span
+          className="add-new-row"
+          data-tooltip="tooltip"
+          data-placement="bottom"
+          title="Add New Row"
+        >
+          <i className="icon icon-plus" />
+        </span>
+      </>
+    );
+  };
+
 
   return (
-    <div className={`builder-row-container`}>
-      <div  style={{'--count': columns.length}} className="columns">
-        {
-          columns.map((columnId) => {
-            return <BuilderColumn columnId={columnId} />
-          })
-        }
-      </div>
+    <div className={`hl_page-creator--row`}>
+      <RowMoreActions />
+      {columns.map((columnId) => {
+          return <BuilderColumn key={columnId} columnId={columnId} />;
+        })}
     </div>
-  )
+  );
 };
 
 export default Row;

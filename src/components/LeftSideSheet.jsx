@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import SideRowSheet from "./SideRowSheet/SideRowSheet";
 import { closeLeftTab } from "../reducers/platformReducer";
 import Drawer from "./reusableComponents/Drawer/Drawer"
+import SideElementsSheet from "./SideElementsSheet";
 
 const LeftSideSheet = () => {
   const { leftTab } = useSelector((state) => state.platform);
@@ -19,7 +20,7 @@ const LeftSideSheet = () => {
             type === 'ROW' ? <SideRowSheet /> : <></>
         }
         {
-            type === 'ELEMENT' ? <SideElementSheet /> : <></>
+            type === 'ELEMENT' ? <SideElementsSheet /> : <></>
         }
       </div>
     </Drawer>

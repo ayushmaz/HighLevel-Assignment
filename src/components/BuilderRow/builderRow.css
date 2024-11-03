@@ -1,0 +1,10 @@
+.builder-row-container{
+    width: 100%;
+    padding: 1rem;
+}
+
+.columns{
+    display: grid;
+    grid-template-columns: repeat(var(--count), 1fr);
+    gap: 1rem;
+}

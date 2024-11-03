@@ -5,7 +5,12 @@ let initialState = {
         'row-1': {
             rowId: 'row-1',
             sectionName: 'First Row',
-            columns: []
+            columns: ['col-1', 'col-2']
+        },
+        'row-2': {
+            rowId: 'row-2',
+            sectionName: 'Second Row',
+            columns: ['col-3', 'col-4', 'col-5']
         }
     },
 }

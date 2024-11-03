@@ -1,0 +1,17 @@
+.column{
+    height: 80%;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.new-element-blank{
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+    background: rgba(255, 116, 2, 0.1);
+    border: 1px solid rgba(255, 116, 2, 0.2);
+    padding: 10px 8px;
+}

@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import "./builderRow.css"
+import BuilderColumn from "../BuilderColumn/BuilderColumn";
 
 const Row = ({ rowId }) => {
   const { rowsById } = useSelector((state) => state.rows);
@@ -15,7 +17,15 @@ const Row = ({ rowId }) => {
   }
 
   return (
-    <div></div>
+    <div className={`builder-row-container`}>
+      <div  style={{'--count': columns.length}} className="columns">
+        {
+          columns.map((columnId) => {
+            return <BuilderColumn columnId={columnId} />
+          })
+        }
+      </div>
+    </div>
   )
 };
 

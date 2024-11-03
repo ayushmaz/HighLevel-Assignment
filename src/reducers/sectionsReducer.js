@@ -5,10 +5,15 @@ let initialState = {
         'section-1': {
             sectionId: 'section-1',
             sectionName: 'Example Section',
-            rows: ['row-1']
-        }
+            rows: ['row-1', 'row-2']
+        },
+        'section-2': {
+          sectionId: 'section-2',
+          sectionName: 'Example Section',
+          rows: []
+      }
     },
-    sectionsOrder: ['section-1']
+    sectionsOrder: ['section-1', 'section-2']
 }
 
 const sectionSlice = createSlice({

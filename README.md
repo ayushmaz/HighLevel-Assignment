@@ -1,8 +1,39 @@
-# React + Vite
+# High Level
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a React application designed to provide a modern, interactive user interface for building a web page. It uses React and Redux to build a dynamic web application.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To get started with the React project, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   https://github.com/ayushmaz/HighLevel-Assignment.git
+   cd HighLevel-Assignment
+2. **Install dependencies::**
+   ```bash
+   npm install
+
+3. **Run the development server::**
+   ```bash
+   npm run dev
+
+
+## Third Party Library Used
+  - react-redux
+  - @reduxjs/toolkit
+
+## Deployment (Vercel)
+  - https://high-level-assignment-kappa.vercel.app/
+
+## Video 
+https://github.com/user-attachments/assets/44396e1e-c7be-4b16-a6bc-0d8f0b7198fd
+
+
+## Images
+<img width="300" alt="Screenshot 2024-11-04 at 12 43 03 PM" src="https://github.com/user-attachments/assets/63205a0a-4e97-4e8d-a01a-e8a7c45385c7">
+<img width="300" alt="Screenshot 2024-11-04 at 12 50 25 PM" src="https://github.com/user-attachments/assets/d95563c1-65a4-4c1b-9e24-93f0d6222ea7">
+<img width="300" alt="Screenshot 2024-11-04 at 12 46 18 PM" src="https://github.com/user-attachments/assets/07716795-b22c-4e6c-b18f-9fd08b835d49">
+<img width="300" alt="Screenshot 2024-11-04 at 12 47 43 PM" src="https://github.com/user-attachments/assets/abbc9b8a-f022-4448-b89f-47c20c932706">
+
+

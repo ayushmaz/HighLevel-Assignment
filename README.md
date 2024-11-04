@@ -27,9 +27,10 @@ To get started with the React project, follow these steps:
   - https://high-level-assignment-kappa.vercel.app/
 
 ## Images
-<img width="200" alt="Screenshot 2024-09-09 at 1 55 14 PM" src="https://github.com/user-attachments/assets/8cfe2a0a-0877-4aa2-b898-3aff576a6bd8">
-<img width="1500" alt="Screenshot 2024-09-09 at 1 54 54 PM" src="https://github.com/user-attachments/assets/8d6d9463-e3be-4ad2-9643-4ba1814d98ea">
-
+<img width="300" alt="Screenshot 2024-11-04 at 12 43 03 PM" src="https://github.com/user-attachments/assets/63205a0a-4e97-4e8d-a01a-e8a7c45385c7">
+<img width="300" alt="Screenshot 2024-11-04 at 12 43 10 PM" src="https://github.com/user-attachments/assets/ccc5129f-a2bd-463d-8597-5401b51399dc">
+<img width="300" alt="Screenshot 2024-11-04 at 12 46 18 PM" src="https://github.com/user-attachments/assets/07716795-b22c-4e6c-b18f-9fd08b835d49">
+<img width="300" alt="Screenshot 2024-11-04 at 12 47 43 PM" src="https://github.com/user-attachments/assets/abbc9b8a-f022-4448-b89f-47c20c932706">
 
 
 

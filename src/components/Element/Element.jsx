@@ -1,18 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HeadingElement from "./HeadingElement/HeadingElement";
 import ImageElement from "./ImageElement/ImageElement";
 import ContainerActions from "../reusableComponents/ContainerActions";
 import { useState } from "react";
+import { openLeftTab } from "../../reducers/platformReducer";
 
 const Element = ({ elementId }) => {
   const { elementsById } = useSelector((state) => state.elements);
   const { elementType } = elementsById[elementId] || { elementType: "" };
   const [active, setActive] = useState(false);
+  const dispatch = useDispatch();
+
+  const onSettingsAction = () => {
+    dispatch(openLeftTab({ type: "ELEMENT_CONFIGURATION", id: elementId }));
+  }
 
   const ElementMoreActions = () => {
     return (
       <>
-        <ContainerActions />
+        <ContainerActions onSettingsAction={onSettingsAction}  />
         <span
           className="add-new-element"
           data-tooltip="tooltip"

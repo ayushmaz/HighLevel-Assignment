@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUUID } from "../../utils/platformUtils";
 import { addElement } from "../../reducers/elementsReducer";
 import { addElementInColumn } from "../../reducers/columnsReducer";
+import { closeLeftTab } from "../../reducers/platformReducer";
 
 const SideElementsSheet = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ const SideElementsSheet = () => {
     }
     dispatch(addElement({...newElement}))
     dispatch(addElementInColumn({colId: id, elementId: newElement.elementId}))
+    dispatch(closeLeftTab())
   }
 
   const onImageClicked = () => {
@@ -27,12 +29,13 @@ const SideElementsSheet = () => {
       elementType: 'IMAGE',
       elementId: `element-${getUUID()}`,
       metadata: {
-        url: 'https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=800',
+        url: 'https://images.pexels.com/photos/2130475/pexels-photo-2130475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         alt: ''
       }
     }
     dispatch(addElement({...newElement}))
     dispatch(addElementInColumn({colId: id, elementId: newElement.elementId}))
+    dispatch(closeLeftTab())
   }
   return (
     <div className="add-element-body">

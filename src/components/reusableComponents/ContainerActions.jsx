@@ -1,6 +1,7 @@
 const ContainerActions = ({
     onUpAction,
-    onDownAction
+    onDownAction,
+    onSettingsAction,
 }) => {
     return (
         <div className="hl_page-creator--actions">
@@ -13,7 +14,7 @@ const ContainerActions = ({
             </span>
           </div>
           <div className="more-actions">
-            <span data-tooltip="tooltip" data-placement="top" title="Settings">
+            <span onClick={onSettingsAction} data-tooltip="tooltip" data-placement="top" title="Settings">
               <i className="fas fa-cog" />
             </span>
             <span data-tooltip="tooltip" data-placement="top" title="Clone">

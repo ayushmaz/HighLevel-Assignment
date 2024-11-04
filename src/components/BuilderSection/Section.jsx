@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import Row from "../BuilderRow/Row";
 import "./builderSection.css";
 import { openLeftTab } from "../../reducers/platformReducer";
-import { reArrangeSections } from "../../reducers/sectionsReducer";
+import { addSection, reArrangeSections } from "../../reducers/sectionsReducer";
 import ContainerActions from "../reusableComponents/ContainerActions";
 import { useState } from "react";
+import { getUUID } from "../../utils/platformUtils";
 
 const Section = ({ sectionId }) => {
   const dispatch = useDispatch();
+  const [active, setActive] = useState(false);
   const { sectionsById, sectionsOrder } = useSelector(
     (state) => state.sections
   );
@@ -38,23 +40,44 @@ const Section = ({ sectionId }) => {
     dispatch(reArrangeSections(newSectionsOrder));
   };
 
+  const addNewSection = () => {
+    let sectionId = `section-${getUUID()}`
+    let newSection = {
+      sectionId,
+      sectionName: '',
+      rows: []
+    }
+    dispatch(addSection({newSection, sectionIndex}));
+  }
+
   const MoreActions = () => (
     <>
-      <ContainerActions onUpAction={() => onUpAction(sectionIndex)} onDownAction={() => onDownAction(sectionIndex)} />
+      <ContainerActions
+        onUpAction={() => onUpAction(sectionIndex)}
+        onDownAction={() => onDownAction(sectionIndex)}
+      />
       <span
         className="add-new-section"
         data-tooltip="tooltip"
         data-placement="bottom"
         title="Add New Section"
       >
-        <i className="icon icon-plus" />
+        <i onClick={addNewSection} className="icon icon-plus" />
       </span>
     </>
   );
 
   if (rows.length === 0) {
     return (
-      <div onMouseEnter={() => {}} className="hl_page-creator--section section-container">
+      <div
+        onMouseEnter={() => setActive(true)}
+        onMouseLeave={() => {
+          setActive(false);
+        }}
+        className={`hl_page-creator--section section-container ${
+          active ? "active" : ""
+        }`}
+      >
         <MoreActions />
         <div className="add-new-row-container">
           <span
@@ -69,7 +92,15 @@ const Section = ({ sectionId }) => {
   }
 
   return (
-    <section className="hl_page-creator--section">
+    <section
+      onMouseEnter={() => setActive(true)}
+      onMouseLeave={() => {
+        setActive(false);
+      }}
+      className={`hl_page-creator--section ${
+        active ? "active" : ""
+      }`}
+    >
       <MoreActions />
       {rows.map((rowId) => {
         return <Row key={rowId} sectionId={sectionId} rowId={rowId} />;

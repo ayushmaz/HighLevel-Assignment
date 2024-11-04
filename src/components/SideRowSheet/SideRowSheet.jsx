@@ -11,7 +11,6 @@ const SideRowSheet = () => {
   const { leftTab } = useSelector((state) => state.platform);
   const { sectionsById } = useSelector((state) => state.sections);
   const onClick = (index) => {
-    debugger
     let newRow = {
       rowId: `row-${getUUID()}`,
       columns: []

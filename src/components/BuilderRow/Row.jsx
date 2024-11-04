@@ -6,6 +6,7 @@ import { reArrangeRows } from "../../reducers/sectionsReducer";
 import { useId, useState } from "react";
 import { addRow } from "../../reducers/rowsReducer";
 import { addCol } from "../../reducers/columnsReducer";
+import { getUUID } from "../../utils/platformUtils";
 
 const Row = ({sectionId,  rowId }) => {
   const dispatch = useDispatch()
@@ -34,25 +35,25 @@ const Row = ({sectionId,  rowId }) => {
   }
 
   const addNewRow = () => {
-    let rowId = `row-${id}`
-    let colId = `col-${id}`
+    let _rowId = `row-${getUUID()}`
+    let colId = `col-${getUUID()}`
     let newRow = {
-      rowId: rowId,
+      rowId: _rowId,
       columns: [colId]
     }
 
     let newRows = [...rows];
     const index = newRows.indexOf(rowId);
-    newRows.splice(index, 0, rowId);
+    newRows.splice(index + 1, 0, _rowId);
     dispatch(addCol({colId: colId, newCol: {elements: []}}));
-    dispatch(addRow({rowId, newRow}));
+    dispatch(addRow({rowId: _rowId, newRow}));
     dispatch(reArrangeRows({sectionId, rows: newRows}));
   }
 
   const RowMoreActions = () => {
     return (
       <>
-        <ContainerActions onUpAction={onRowUpAction} onDownAction={onRowDownAction}/>
+        <ContainerActions onUpAction={onRowUpAction} onDownAction={onRowDownAction} onSettingsAction={() => {alert("Hey")}}/>
         <span
           className="add-new-row"
           data-tooltip="tooltip"

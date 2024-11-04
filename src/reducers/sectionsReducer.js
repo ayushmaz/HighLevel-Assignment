@@ -5,15 +5,10 @@ let initialState = {
         'section-1': {
             sectionId: 'section-1',
             sectionName: 'Example Section',
-            rows: ['row-1', 'row-2']
-        },
-        'section-2': {
-          sectionId: 'section-2',
-          sectionName: 'Example Section',
-          rows: []
-      }
+            rows: []
+        }
     },
-    sectionsOrder: ['section-1', 'section-2']
+    sectionsOrder: ['section-1']
 }
 
 const sectionSlice = createSlice({
@@ -21,7 +16,12 @@ const sectionSlice = createSlice({
   initialState: initialState,
   reducers: {
     addSection: (state, action) => {
-      state.sectionsOrder.push(action.payload);
+      const {newSection, sectionIndex} = action.payload
+      const {sectionId} = newSection
+      let newSections = [...state.sectionsOrder];
+      newSections.splice(sectionIndex + 1, 0, newSection.sectionId);
+      state.sectionsOrder = newSections
+      state.sectionsById[sectionId] = newSection
     },
     reArrangeSections: (state, action) => {
       state.sectionsOrder = action.payload;

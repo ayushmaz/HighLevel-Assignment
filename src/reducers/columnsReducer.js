@@ -20,7 +20,10 @@ const columnSlice = createSlice({
   initialState: initialState,
   reducers: {
     addCol: (state, action) => {
-      state.rows.push(action.payload);
+      let _columnsById = {...state.columnsById};
+      const { colId, newCol } = action.payload;
+      _columnsById[colId] = newCol
+      state.columnsById = _columnsById;
     },
   },
 });

@@ -23,15 +23,18 @@ const sectionSlice = createSlice({
     addSection: (state, action) => {
       state.sectionsOrder.push(action.payload);
     },
-    removeSection: (state, action) => {
-      state.sectionsOrder = state.sections.filter(section => section.sectionId !== action.payload);
-    },
     reArrangeSections: (state, action) => {
-      console.log(action.payload)
       state.sectionsOrder = action.payload;
     },
+    reArrangeRows: (state, action) => {
+      const {sectionId, rows} = action.payload || {sectionId: '', rows: []}
+      if(!sectionId) return
+      const _sectionById = {...state.sectionsById}
+      _sectionById[sectionId].rows = rows
+      state.sectionsById = _sectionById
+    }
   },
 });
 
-export const { addSection, removeSection, reArrangeSections } = sectionSlice.actions;
+export const { addSection, removeSection, reArrangeSections, reArrangeRows } = sectionSlice.actions;
 export default sectionSlice.reducer;

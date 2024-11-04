@@ -2,42 +2,44 @@ import { useDispatch, useSelector } from "react-redux";
 import Row from "../BuilderRow/Row";
 import "./builderSection.css";
 import { openLeftTab } from "../../reducers/platformReducer";
+import { reArrangeSections } from "../../reducers/sectionsReducer";
+import ContainerActions from "../reusableComponents/ContainerActions";
 
 const Section = ({ sectionId }) => {
-    const dispatch = useDispatch()
-  const { sectionsById } = useSelector((state) => state.sections);
+  const dispatch = useDispatch();
+  const { sectionsById, sectionsOrder } = useSelector(
+    (state) => state.sections
+  );
   const { rows } = sectionsById[sectionId] || { rows: [] };
+  const sectionIndex = sectionsOrder.indexOf(sectionId);
 
   const onAddNewRowClicked = () => {
-    dispatch(openLeftTab({type: 'ROW'}))
-  }
+    dispatch(openLeftTab({ type: "ROW", id: sectionId }));
+  };
+
+  const onUpAction = (sectionIndex) => {
+    if (sectionIndex === 0) return;
+    const newSectionsOrder = [...sectionsOrder];
+    [newSectionsOrder[sectionIndex], newSectionsOrder[sectionIndex - 1]] = [
+      newSectionsOrder[sectionIndex - 1],
+      newSectionsOrder[sectionIndex],
+    ];
+    dispatch(reArrangeSections(newSectionsOrder));
+  };
+
+  const onDownAction = (sectionIndex) => {
+    if (sectionIndex === sectionsOrder.length - 1) return;
+    const newSectionsOrder = [...sectionsOrder];
+    [newSectionsOrder[sectionIndex], newSectionsOrder[sectionIndex + 1]] = [
+      newSectionsOrder[sectionIndex + 1],
+      newSectionsOrder[sectionIndex],
+    ];
+    dispatch(reArrangeSections(newSectionsOrder));
+  };
 
   const MoreActions = () => (
     <>
-      <div className="hl_page-creator--actions">
-        <div className="move-actions">
-          <span data-tooltip="tooltip" data-placement="right" title="Up">
-            <i className="icon icon-arrow-up-2" />
-          </span>
-          <span data-tooltip="tooltip" data-placement="right" title="Down">
-            <i className="icon icon-arrow-down-2" />
-          </span>
-        </div>
-        <div className="more-actions">
-          <span data-tooltip="tooltip" data-placement="left" title="Settings">
-            <i className="fas fa-cog" />
-          </span>
-          <span data-tooltip="tooltip" data-placement="left" title="Clone">
-            <i className="far fa-eye" />
-          </span>
-          <span data-tooltip="tooltip" data-placement="left" title="Save">
-            <i className="far fa-copy" />
-          </span>
-          <span data-tooltip="tooltip" data-placement="left" title="Delete">
-            <i className="far fa-trash-alt" />
-          </span>
-        </div>
-      </div>
+      <ContainerActions onUpAction={() => onUpAction(sectionIndex)} onDownAction={() => onDownAction(sectionIndex)} />
       <span
         className="add-new-section"
         data-tooltip="tooltip"
@@ -54,7 +56,12 @@ const Section = ({ sectionId }) => {
       <div className="hl_page-creator--section section-container">
         <MoreActions />
         <div className="add-new-row-container">
-            <span onClick={onAddNewRowClicked} className="btn btn-light4 btn-slim">Add New Row</span>
+          <span
+            onClick={onAddNewRowClicked}
+            className="btn btn-light4 btn-slim"
+          >
+            Add New Row
+          </span>
         </div>
       </div>
     );
@@ -64,7 +71,7 @@ const Section = ({ sectionId }) => {
     <section className="hl_page-creator--section">
       <MoreActions />
       {rows.map((rowId) => {
-        return <Row key={rowId} rowId={rowId} />;
+        return <Row key={rowId} sectionId={sectionId} rowId={rowId} />;
       })}
     </section>
   );

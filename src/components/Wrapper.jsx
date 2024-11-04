@@ -1,4 +1,4 @@
-import SideElementsSheet from "./SideElementsSheet";
+import SideElementsSheet from "./SideElementsSheet/SideElementsSheet";
 import SideRowSheet from "./SideRowSheet/SideRowSheet";
 import WebsiteBuilder from "./WebsiteBuilder";
 

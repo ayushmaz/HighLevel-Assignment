@@ -1,11 +1,9 @@
 import React from "react";
+import "./sideElementsSheet.css"
 
 const SideElementsSheet = () => {
   return (
     <div className="add-element-body">
-      <div className="form-group">
-        <input type="text" className="form-control" placeholder="Search" />
-      </div>
       <div className="element-group">
         <h4>Text</h4>
         <div className="element-cards">

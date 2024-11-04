@@ -20,7 +20,10 @@ const rowSlice = createSlice({
   initialState: initialState,
   reducers: {
     addRow: (state, action) => {
-      state.rows.push(action.payload);
+      let _rowsById = {...state.rowsById};
+      const { rowId, newRow } = action.payload;
+      _rowsById[rowId] = newRow
+      state.rowsById = _rowsById;
     },
   },
 });

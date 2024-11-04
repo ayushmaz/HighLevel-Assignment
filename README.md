@@ -28,9 +28,8 @@ To get started with the React project, follow these steps:
 
 ## Images
 <img width="300" alt="Screenshot 2024-11-04 at 12 43 03 PM" src="https://github.com/user-attachments/assets/63205a0a-4e97-4e8d-a01a-e8a7c45385c7">
-<img width="300" alt="Screenshot 2024-11-04 at 12 43 10 PM" src="https://github.com/user-attachments/assets/ccc5129f-a2bd-463d-8597-5401b51399dc">
+<img width="300" alt="Screenshot 2024-11-04 at 12 50 25 PM" src="https://github.com/user-attachments/assets/d95563c1-65a4-4c1b-9e24-93f0d6222ea7">
 <img width="300" alt="Screenshot 2024-11-04 at 12 46 18 PM" src="https://github.com/user-attachments/assets/07716795-b22c-4e6c-b18f-9fd08b835d49">
 <img width="300" alt="Screenshot 2024-11-04 at 12 47 43 PM" src="https://github.com/user-attachments/assets/abbc9b8a-f022-4448-b89f-47c20c932706">
-
 
 

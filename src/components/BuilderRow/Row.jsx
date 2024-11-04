@@ -53,7 +53,7 @@ const Row = ({sectionId,  rowId }) => {
   const RowMoreActions = () => {
     return (
       <>
-        <ContainerActions onUpAction={onRowUpAction} onDownAction={onRowDownAction} onSettingsAction={() => {alert("Hey")}}/>
+        <ContainerActions onUpAction={onRowUpAction} onDownAction={onRowDownAction} />
         <span
           className="add-new-row"
           data-tooltip="tooltip"

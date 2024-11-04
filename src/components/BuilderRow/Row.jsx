@@ -3,13 +3,14 @@ import "./builderRow.css";
 import BuilderColumn from "../BuilderColumn/BuilderColumn";
 import ContainerActions from "../reusableComponents/ContainerActions";
 import { reArrangeRows } from "../../reducers/sectionsReducer";
-import { useId } from "react";
+import { useId, useState } from "react";
 import { addRow } from "../../reducers/rowsReducer";
 import { addCol } from "../../reducers/columnsReducer";
 
 const Row = ({sectionId,  rowId }) => {
   const dispatch = useDispatch()
   const id = useId()
+  const [active, setActive] = useState(false)
   const { rowsById } = useSelector((state) => state.rows);
   const { sectionsById } = useSelector((state) => state.sections);
   const { columns } = rowsById[rowId];
@@ -66,7 +67,7 @@ const Row = ({sectionId,  rowId }) => {
 
 
   return (
-    <div className={`hl_page-creator--row`}>
+    <div onMouseEnter={() => setActive(true)} onMouseLeave={() => {setActive(false)}}  className={`hl_page-creator--row ${active? "active": ""}`}>
       <RowMoreActions />
       {columns.map((columnId) => {
           return <BuilderColumn key={columnId} columnId={columnId} />;

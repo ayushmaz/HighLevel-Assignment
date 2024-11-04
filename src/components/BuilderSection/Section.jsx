@@ -4,6 +4,7 @@ import "./builderSection.css";
 import { openLeftTab } from "../../reducers/platformReducer";
 import { reArrangeSections } from "../../reducers/sectionsReducer";
 import ContainerActions from "../reusableComponents/ContainerActions";
+import { useState } from "react";
 
 const Section = ({ sectionId }) => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Section = ({ sectionId }) => {
 
   if (rows.length === 0) {
     return (
-      <div className="hl_page-creator--section section-container">
+      <div onMouseEnter={() => {}} className="hl_page-creator--section section-container">
         <MoreActions />
         <div className="add-new-row-container">
           <span

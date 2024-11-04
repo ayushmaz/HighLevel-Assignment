@@ -10,7 +10,7 @@ let initialState = {
         'row-2': {
             rowId: 'row-2',
             sectionName: 'Second Row',
-            columns: ['col-3', 'col-4', 'col-5']
+            columns: ['col-3']
         }
     },
 }

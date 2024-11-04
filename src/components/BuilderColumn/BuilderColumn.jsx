@@ -10,7 +10,7 @@ const BuilderColumn = ({columnId}) => {
     const {elements} = columnsById[columnId] || {elements: []}
 
     const onAddNewElementClicked = () => {
-        dispatch(openLeftTab({type: 'ELEMENT'}))
+        dispatch(openLeftTab({type: 'ELEMENT', id: columnId}))
     }
 
     if(elements.length === 0) {

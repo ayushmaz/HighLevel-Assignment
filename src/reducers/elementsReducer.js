@@ -4,7 +4,7 @@ let initialState = {
     elementsById: {
         'element-1': {
             elementId: 'element-1',
-            elementType: 'HEADING',
+            elementType: 'HEADLINE',
             metadata: {
                 content: 'Heading Text Goes Here'
             }
@@ -25,7 +25,12 @@ const elementSlice = createSlice({
   initialState: initialState,
   reducers: {
     addElement: (state, action) => {
-      state.rows.push(action.payload);
+      const { elementType, elementId, metadata } = action.payload;
+      state.elementsById[elementId] = {
+        elementId,
+        elementType,
+        metadata
+      }
     },
   },
 });

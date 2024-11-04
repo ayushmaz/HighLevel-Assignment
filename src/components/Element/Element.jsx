@@ -2,10 +2,12 @@ import { useSelector } from "react-redux";
 import HeadingElement from "./HeadingElement/HeadingElement";
 import ImageElement from "./ImageElement/ImageElement";
 import ContainerActions from "../reusableComponents/ContainerActions";
+import { useState } from "react";
 
 const Element = ({ elementId }) => {
   const { elementsById } = useSelector((state) => state.elements);
   const { elementType } = elementsById[elementId] || { elementType: "" };
+  const [active, setActive] = useState(false);
 
   const ElementMoreActions = () => {
     return (
@@ -25,7 +27,7 @@ const Element = ({ elementId }) => {
 
   const renderElement = () => {
     switch (elementType) {
-      case "HEADING":
+      case "HEADLINE":
         return <HeadingElement elementId={elementId} />;
       case "IMAGE":
         return <ImageElement elementId={elementId} />;
@@ -36,10 +38,20 @@ const Element = ({ elementId }) => {
     }
   };
 
-  return <div className="hl_page-creator--element">
-    <ElementMoreActions />
-    {renderElement()}
-    </div>;
+  return (
+    <div
+      onMouseEnter={(e) => {
+        setActive(true)
+      }}
+      onMouseLeave={(e) => {
+        setActive(false);
+      }}
+      className={`hl_page-creator--element ${active? "active": ""}`}
+    >
+      <ElementMoreActions />
+      {renderElement()}
+    </div>
+  );
 };
 
 export default Element;

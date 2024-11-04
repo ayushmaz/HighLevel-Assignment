@@ -11,6 +11,11 @@ let initialState = {
             colId: 'col-2',
             columnName: 'Second Column',
             elements: ['element-2']
+        },
+        'col-3': {
+            colId: 'col-3',
+            columnName: 'Third Column',
+            elements: []
         }
     },
 }
@@ -25,8 +30,14 @@ const columnSlice = createSlice({
       _columnsById[colId] = newCol
       state.columnsById = _columnsById;
     },
+    addElementInColumn: (state, action) => {
+      let _columnsById = {...state.columnsById}
+      const { colId, elementId } = action.payload;
+      _columnsById[colId].elements.push(elementId);
+      state.columnsById = _columnsById;
+    }
   },
 });
 
-export const { addCol } = columnSlice.actions;
+export const { addCol, addElementInColumn } = columnSlice.actions;
 export default columnSlice.reducer;
